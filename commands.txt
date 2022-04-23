@@ -1,0 +1,25 @@
+h1 echo
+
+h1 echo Setting ip addresses for all interfaces...
+h1 ip addr replace dev h1-eth0 10.0.0.1
+h2 ip addr replace dev h2-eth0 192.168.0.1
+h3 ip addr replace dev h3-eth0 10.0.0.3
+h4 ip addr replace dev h4-eth0 192.168.0.3
+r1 ip addr replace dev r1-eth1 10.0.0.2
+r1 ip addr replace dev r1-eth2 192.168.0.2
+r1 ip addr replace dev r1-eth3 10.0.0.4
+r1 ip addr replace dev r1-eth4 192.168.0.4
+
+h1 echo Setting default routes for all hosts...
+h1 ip route add default dev h1-eth0
+h2 ip route add default dev h2-eth0
+h3 ip route add default dev h3-eth0
+h4 ip route add default dev h4-eth0
+
+r1 echo Setting routes for the router...
+r1 ip route add 10.0.0.1/32 dev r1-eth1
+r1 ip route add 192.168.0.1/32 dev r1-eth2
+r1 ip route add 10.0.0.3/32 dev r1-eth3
+r1 ip route add 192.168.0.3/32 dev r1-eth4
+
+r1 echo Setup complete.
